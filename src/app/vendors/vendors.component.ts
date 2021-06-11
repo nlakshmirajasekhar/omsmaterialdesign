@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import {MatPaginator} from '@angular/material/paginator'
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { VendorService } from '../services/vendor.service';
 
 @Component({
   selector: 'app-vendors',
@@ -12,7 +13,16 @@ export class VendorsComponent implements OnInit {
 
   public searchvend:string="";
   public createview:boolean=true;
-  constructor(private router:Router) { }
+  constructor(private router:Router,private serv:VendorService) {
+
+    this.serv.getvendors().subscribe(
+      res=>{
+        console.log(res);
+      }
+    )
+
+
+   }
 
   ngOnInit(): void {
   }
