@@ -1,0 +1,51 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list *ngIf="router.url ==='/vendor'">
+      <a mat-list-item href="#" ></a>
+      <a mat-list-item >Create Vendor</a>
+      <a mat-list-item href="#">Search Vendor</a>
+    </mat-nav-list>
+    <mat-nav-list *ngIf="router.url ==='/orderM'">
+      <a mat-list-item href="#" >search</a>
+      <a mat-list-item href="#">create</a>
+      <a mat-list-item href="#">Update status</a>
+    </mat-nav-list>
+    <mat-nav-list *ngIf="router.url ==='/clientM'">
+      <a mat-list-item href="#" >search</a>
+      <a mat-list-item href="#">create</a>
+      <a mat-list-item href="#">update</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <mat-toolbar-row>
+        <span>OMS Support</span>
+      </mat-toolbar-row>
+
+      <mat-toolbar-row>
+      <a mat-button routerLink="/orderM">Orders</a>
+      <a mat-button routerLink="/vendor">vendors</a>
+      <a mat-button routerLink="/clientM">Clients</a>
+      <span class="spacer"></span>
+      <a mat-button routerLink="/register">Register</a>
+      <a mat-button routerLink="/login">Login</a>
+    </mat-toolbar-row>
+</mat-toolbar>
+    <router-outlet></router-outlet>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+
